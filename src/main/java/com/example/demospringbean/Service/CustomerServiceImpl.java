@@ -37,9 +37,6 @@ public class CustomerServiceImpl implements CustomerService {
     // tìm kiếm 1 khách hàng, jpa findById
     @Override
     public Optional<Customer> getCustomer(Integer id) {
-        Customer customer = new Customer(id);
-    // multi language getCustomer ?
-
         return customerRepository.findById(id);
     }
 }
