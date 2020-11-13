@@ -21,7 +21,9 @@ public class CustomerController {
 
     // lấy tất cả danh sách khách hàng
     @GetMapping("/customers/getall")
-    public Iterable<Customer> getAll(){
+    public Iterable<Customer> getAll()
+    {
+        System.out.println("loading get all ....");
         return customerService.getAll();
     }
 
@@ -44,10 +46,13 @@ public class CustomerController {
     }
 
 
+    // ngôn ngữ tiếng anh
+    // lấy đối tượng theo id
     @RequestMapping("/customers/languageEN/{id}")
     @ResponseBody
     public Customer getCustomerByEnglishLanguage (Locale locale,@PathVariable("id") Integer id) {
         Customer customer =  customerService.getCustomer(id).get();
+        // "name" lấy từ key file messages.properties, locale là lấy ngôn ngữ được mặc định trong message
         customer.setName(messageSource.getMessage(
                 "name",null, locale));
         return  customer;
